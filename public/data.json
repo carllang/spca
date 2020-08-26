@@ -1,0 +1,28 @@
+{
+  "kennels": [
+    {
+      "id": 0,
+      "label": "A",
+      "attribute": [],
+      "assignment": null
+    },
+    {
+      "id": 1,
+      "label": "B",
+      "attribute": [],
+      "assignment": null
+    },
+    {
+      "id": 2,
+      "label": "C",
+      "attribute": [],
+      "assignment": null
+    },
+    {
+      "id": 3,
+      "label": "D",
+      "attribute": [],
+      "assignment": null
+    }
+  ]
+}
