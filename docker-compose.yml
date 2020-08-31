@@ -1,0 +1,15 @@
+db-mongo:
+  image: mongo:4.4
+  container_name: mongodb
+  volumes:
+    - ./mongod.conf:/etc/mongod.conf
+  #   - ./logs:/var/log/mongodb/
+  #   - ./db:/var/lib/mongodb
+  command: mongod
+  ports:
+    - 27017:27017
+
+  # environment:
+  #   MONGO_INITDB_ROOT_USERNAME: root
+  #   MONGO_INITDB_ROOT_PASSWORD: root
+    

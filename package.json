@@ -9,11 +9,14 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "dyson": "^3.0.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.1",
     "node-sass": "^4.13.1",
-    "nodemon": "^2.0.3",
+    "nodemon": "^2.0.4",
     "prettier": "^2.0.4",
     "react": "^16.12.0",
     "react-async": "^10.0.1",
@@ -30,9 +33,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mocks": "dyson src/stubs 3001",
-    "watch": "nodemon --watch src/stubs --exec dyson src/stubs 3001",
-    "dev": "yarn watch & yarn start"
+    "server": "nodemon -L ./server -V"
   },
   "eslintConfig": {
     "extends": "react-app"
