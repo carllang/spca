@@ -1,7 +1,7 @@
-const models = require('../models');
+const { User, Role } = require('../models');
 
 const createUsers = async () => {
-  const user1 = new models.Users({
+  const user1 = new User({
     username: 'admin',
     password: 'spca1610',
     firstName: 'Carl',
@@ -9,7 +9,7 @@ const createUsers = async () => {
     roles: ['admin'],
   });
 
-  const user2 = new models.Users({
+  const user2 = new User({
     username: 'adminadmin',
     password: 'adminadmin',
     firstName: 'admin',
@@ -17,7 +17,7 @@ const createUsers = async () => {
     roles: ['admin'],
   });
 
-  const user3 = new models.Users({
+  const user3 = new User({
     username: 'staff',
     password: 'staff',
     firstName: 'John',
@@ -30,4 +30,40 @@ const createUsers = async () => {
   await user3.save();
 };
 
-module.exports = { createUsers };
+function initialRoles() {
+  Role.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+      new Role({
+        name: 'user',
+      }).save((err) => {
+        if (err) {
+          console.log('error', err);
+        }
+
+        console.log("added 'user' to roles collection");
+      });
+
+      new Role({
+        name: 'moderator',
+      }).save((err) => {
+        if (err) {
+          console.log('error', err);
+        }
+
+        console.log("added 'moderator' to roles collection");
+      });
+
+      new Role({
+        name: 'admin',
+      }).save((err) => {
+        if (err) {
+          console.log('error', err);
+        }
+
+        console.log("added 'admin' to roles collection");
+      });
+    }
+  });
+}
+
+module.exports = { createUsers, initialRoles };

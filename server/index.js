@@ -1,26 +1,27 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const models = require('./models');
+const { User } = require('./models');
 const { createUsers } = require('./scripts/inserts');
 require('dotenv').config();
 
 const app = express();
+app.use(express.json());
 require('./routes')(app);
 
 const eraseDatabaseOnSync = true;
-console.log('(process.env.DATABASE_URL', process.env.DATABASE_URL);
 
-const connectDb = () => mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+// eslint-disable-next-line max-len
+const connectDb = () => mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 connectDb().then(async () => {
   if (eraseDatabaseOnSync) {
     await Promise.all([
-      models.Users.deleteMany(),
+      User.deleteMany(),
     ]);
 
     createUsers();
   }
   app.listen(process.env.PORT, () => {
+    // eslint-disable-next-line no-console
     console.log(`Example app listening on port ${process.env.PORT}!`);
   });
 });

@@ -3,13 +3,11 @@ db-mongo:
   container_name: mongodb
   volumes:
     - ./mongod.conf:/etc/mongod.conf
-  #   - ./logs:/var/log/mongodb/
-  #   - ./db:/var/lib/mongodb
-  command: mongod
+    - ./logs:/var/log/mongodb/
+    - ./db:/var/lib/mongodb
   ports:
     - 27017:27017
-
+  entrypoint: ['mongod', '--config', '/etc/mongod.conf']
   # environment:
   #   MONGO_INITDB_ROOT_USERNAME: root
   #   MONGO_INITDB_ROOT_PASSWORD: root
-    
