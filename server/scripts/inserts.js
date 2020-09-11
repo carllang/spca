@@ -1,25 +1,29 @@
+const bcrypt = require('bcrypt');
 const { User, Role } = require('../models');
 
 const createUsers = async () => {
+  const salt = await bcrypt.genSalt(10);
+  let password = await bcrypt.hash('spca1610', salt);
   const user1 = new User({
     username: 'admin',
-    password: 'spca1610',
+    password,
     firstName: 'Carl',
     lastName: 'Lang',
     roles: ['admin'],
   });
-
+  password = await bcrypt.hash('adminadmin', salt);
   const user2 = new User({
     username: 'adminadmin',
-    password: 'adminadmin',
+    password,
     firstName: 'admin',
     lastName: 'admin',
     roles: ['admin'],
   });
+  password = await bcrypt.hash('staff', salt);
 
   const user3 = new User({
     username: 'staff',
-    password: 'staff',
+    password,
     firstName: 'John',
     lastName: 'Smith',
     roles: ['staff'],

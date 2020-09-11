@@ -1,11 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
+const { authJWT } = require('../middleware');
 const { User } = require('../models');
 
 const router = express.Router();
 
-router.get('/users', async (req, res) => {
+router.get('/users', [authJWT.verifyToken], async (req, res) => {
   const result = await User.find();
 
   res.send(result);

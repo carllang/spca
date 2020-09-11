@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const mongoose = require('mongoose');
 const { User } = require('./models');
@@ -21,7 +22,6 @@ connectDb().then(async () => {
     createUsers();
   }
   app.listen(process.env.PORT, () => {
-    // eslint-disable-next-line no-console
     console.log(`Example app listening on port ${process.env.PORT}!`);
   });
 });
