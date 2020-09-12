@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
+
 require('./routes')(app);
 
 const eraseDatabaseOnSync = true;
@@ -21,7 +22,7 @@ connectDb().then(async () => {
 
     createUsers();
   }
-  app.listen(process.env.PORT, () => {
-    console.log(`Example app listening on port ${process.env.PORT}!`);
+  app.listen(process.env.BACKEND_PORT, () => {
+    console.log(`Example app listening on port ${process.env.BACKEND_PORT}!`);
   });
 });

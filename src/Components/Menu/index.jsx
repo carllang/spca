@@ -27,7 +27,7 @@ const MenuWrapper = () => {
             <HomeIcon />
           </ListItemIcon>
           <Link to="/">
-            <ListItemText primary="Home" />
+            <ListItemText primary="Home." />
           </Link>
         </ListItem>
         <ListItem button>
@@ -58,6 +58,5 @@ const MenuWrapper = () => {
     </div>
   );
 };
-
 
 export default MenuWrapper;

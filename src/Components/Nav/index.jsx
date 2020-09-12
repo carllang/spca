@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,7 +19,6 @@ export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -30,7 +30,11 @@ export default function MenuAppBar() {
   return (
     <AppBar position="static" color="primary">
       <Toolbar className={classes.root}>
+        <Link to="/login" color="inherit">
+          Login
+        </Link>
         <div>
+
           <IconButton
             aria-label="account of current user"
             aria-controls="menu-appbar"
@@ -55,6 +59,7 @@ export default function MenuAppBar() {
             open={open}
             onClose={handleClose}
           >
+
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
           </Menu>
