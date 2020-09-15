@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../../Components/Layout';
+import MainLayout from '../../components/Layout/MainLayout';
 import LayoutEditorContainer from '../LayoutEditor/LayoutEditorContainer';
 
 const Container = styled.div`
@@ -8,12 +8,12 @@ const Container = styled.div`
 `;
 
 const KennelsWrapper = () => (
-  <Layout>
+  <MainLayout>
     <h1>Layout Editor</h1>
     <Container>
       <LayoutEditorContainer />
     </Container>
-  </Layout>
+  </MainLayout>
 );
 
 export default KennelsWrapper;

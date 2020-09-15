@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Nav from '../Nav';
 import Sidebar from '../Sidebar';
@@ -12,7 +13,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Layout = ({ children }) => (
+const MainLayout = ({ children }) => (
   <Container>
     <Sidebar />
     <div style={{ width: '100%' }}>
@@ -26,4 +27,7 @@ const Layout = ({ children }) => (
   </Container>
 );
 
-export default Layout;
+MainLayout.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+export default MainLayout;

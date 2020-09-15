@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import Kennels from './Containers/Pages/Kennels';
-import Admission from './Containers/Pages/Admission';
-import Home from './Containers/Pages/index';
-import LayoutEditor from './Containers/Pages/LayoutEditor';
-import Login from './Containers/Pages/Login';
+import Kennels from './containers/Pages/Kennels';
+import Admission from './containers/Pages/Admission';
+import Home from './containers/Pages/index';
+import LayoutEditor from './containers/Pages/LayoutEditor';
+import Login from './containers/Pages/Login';
 
 const Routes = () => (
   <BrowserRouter>

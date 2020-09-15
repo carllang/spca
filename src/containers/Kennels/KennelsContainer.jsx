@@ -3,9 +3,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import Kennels from '../../Components/Kennels';
-import Pending from '../../Components/Pending/Pending';
-import useFetchKennelData from '../../Hooks/fetchData';
+import Kennels from '../../components/Kennels';
+import Pending from '../../components/Pending/Pending';
+import useFetchKennelData from '../../hooks/fetchData';
 
 const Container = styled.div`
   width: 100%;
@@ -24,6 +24,5 @@ const KennelsContainer = () => {
       )
   );
 };
-
 
 export default KennelsContainer;

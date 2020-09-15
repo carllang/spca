@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from '../../Components/Layout';
+import MainLayout from '../../components/Layout/MainLayout';
 
 const Index = () => (
-  <Layout>
+  <MainLayout>
     <h1>Home</h1>
-  </Layout>
+  </MainLayout>
 );
 
 export default Index;
