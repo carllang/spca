@@ -2,6 +2,8 @@
 /* eslint-disable no-console */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-undef */
+import request from 'superagent';
+
 class AuthService {
   getToken() {
     try {

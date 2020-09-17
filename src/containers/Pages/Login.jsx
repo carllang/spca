@@ -20,7 +20,7 @@ const LoginPage = () => {
   return (
     <LoginLayout>
       <Container>
-        <Modal title="Login" text="Please login to continue" isOpen={isOpen}>
+        <Modal title="Login" text={`Please login to continue (build: ${process.env.NODE_ENV})`} isOpen={isOpen} closeModal={() => {}} openModal={() => {}}>
           <FormContainer>
             <Login />
           </FormContainer>
