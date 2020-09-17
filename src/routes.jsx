@@ -10,14 +10,16 @@ import PrivateRoute from './auth/ProtectedRoute';
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/login" component={() => <Login />} />
 
-      <PrivateRoute>
-        <Route exact path="/" component={() => <Home />} />
-        <Route exact path="/admission" component={() => <Admission />} />
-        <Route exact path="/kennels" component={() => <Kennels />} />
-        <Route exact path="/layoutEditor" component={() => <LayoutEditor />} />
-      </PrivateRoute>
+      <PrivateRoute exact path="/" component={Home} />
+
+      <PrivateRoute exact path="/admission" component={Admission} />
+
+      <PrivateRoute exact path="/kennels" component={Kennels} />
+
+      <PrivateRoute exact path="/layoutEditor" component={LayoutEditor} />
+
+      <Route exact path="/login" component={Login} />
 
     </Switch>
   </BrowserRouter>

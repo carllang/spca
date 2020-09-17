@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AuthService from '../../auth/AuthService';
+
+const StyledTextField = styled(TextField)`
+  margin-bottom: 10px;
+  &:last-of-type {
+    margin-bottom: 40px;
+  }
+`;
 
 const Login = () => {
   const [state, setState] = useState({
@@ -35,8 +43,8 @@ const Login = () => {
   };
   return (
     <form onSubmit={handleLogin}>
-      <TextField autoComplete="off" type="text" id="username" label="Username" fullWidth required helperText="required field" onChange={handleChange} value={state.username} />
-      <TextField type="password" id="password" label="Password" fullWidth required helperText="required field" onChange={handleChange} value={state.password} />
+      <StyledTextField autoComplete="off" type="text" id="username" label="Username" fullWidth required onChange={handleChange} value={state.username} />
+      <StyledTextField type="password" id="password" label="Password" fullWidth required onChange={handleChange} value={state.password} />
       <Button type="submit" variant="contained" color="primary">
         Login
       </Button>

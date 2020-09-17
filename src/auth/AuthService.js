@@ -44,6 +44,7 @@ class AuthService {
   }
 
   isAuthenticated() {
+    console.log('TOKEN ', localStorage.getItem('token'));
     return !!localStorage.getItem('token');
   }
 }
