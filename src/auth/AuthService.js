@@ -15,29 +15,36 @@ class AuthService {
 
   setToken(token) {
     try {
-      return localStorage.setItem('token', token);
+      localStorage.setItem('token', token);
     } catch (e) {
       console.log(e.message);
     }
   }
 
   login(username, password) {
-    const { API_VERSION, API_SERVER, BACKEND_PORT } = process.env;
-    const serverUrl = `${API_SERVER}:${BACKEND_PORT}${API_VERSION}`;
+    const { REACT_APP_ENV_BACKEND_URL } = process.env;
+    const serverUrl = REACT_APP_ENV_BACKEND_URL;
 
-    return request.post(`${serverUrl}/auth/signin`, { username, password }).then((res) => {
-      if (response.data.accessToken) {
-        this.setToken(res.data.accessToken);
-      }
-    });
+    return request
+      .post(`${serverUrl}/auth/signin`, { username, password })
+      .then((response) => {
+        if (response.body.accessToken) {
+          this.setToken(response.body.accessToken);
+        }
+      });
   }
 
   logout() {
     try {
       localStorage.removeItem('token');
+      window.location.reload();
     } catch (e) {
       console.log(e.message);
     }
+  }
+
+  removeToken() {
+    localStorage.removeItem('token');
   }
 
   isAuthenticated() {

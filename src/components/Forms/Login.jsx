@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AuthService from '../../auth/AuthService';
 
+const StyledTextField = styled(TextField)`
+  margin-bottom: 10px;
+  &:last-of-type {
+    margin-bottom: 40px;
+  }
+`;
+
 const Login = () => {
+  AuthService.removeToken();
+
+  const history = useHistory();
   const [state, setState] = useState({
     username: '',
     password: '',
   });
-
-  const history = useHistory();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -29,19 +39,15 @@ const Login = () => {
         window.location.reload();
       },
       (error) => {
-        const resMessage = (error.response
-              && error.response.data
-              && error.response.data.message)
-            || error.message
-            || error.toString();
-        console.log(resMessage);
+        // eslint-disable-next-line no-console
+        console.log(error.message);
       },
     );
   };
   return (
     <form onSubmit={handleLogin}>
-      <TextField autoComplete="false" type="text" id="username" label="Username" fullWidth required helperText="required field" onChange={handleChange} value={state.username} />
-      <TextField type="password" id="password" label="Password" fullWidth required helperText="required field" onChange={handleChange} value={state.password} />
+      <StyledTextField autoComplete="off" type="text" id="username" label="Username" fullWidth required onChange={handleChange} value={state.username} />
+      <StyledTextField type="password" id="password" label="Password" fullWidth required onChange={handleChange} value={state.password} />
       <Button type="submit" variant="contained" color="primary">
         Login
       </Button>

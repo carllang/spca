@@ -14,16 +14,29 @@ const Container = styled.div`
   padding: 20px;
 `;
 
+const Details = styled.span`
+display flex;
+justify-content: flex-end
+`;
+
 const LoginPage = () => {
   const [isOpen] = useState(true);
 
   return (
     <LoginLayout>
       <Container>
-        <Modal title="Login" text={`Please login to continue (build: ${process.env.NODE_ENV})`} isOpen={isOpen} closeModal={() => {}} openModal={() => {}}>
-          <FormContainer>
-            <Login />
-          </FormContainer>
+        <Modal title="Login" text="Please login to continue" isOpen={isOpen} closeModal={() => {}} openModal={() => {}}>
+          <>
+            <FormContainer>
+              <Login />
+            </FormContainer>
+            <div>
+              <Details>
+                {`${process.env.NODE_ENV}`}
+              </Details>
+
+            </div>
+          </>
         </Modal>
       </Container>
     </LoginLayout>
