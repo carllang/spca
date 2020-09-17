@@ -26,7 +26,7 @@ const Login = () => {
     AuthService.login(state.username, state.password).then(
       () => {
         history.push('/');
-        window.location.reload();
+        // window.location.reload();
       },
       (error) => {
         console.log(error.message);
@@ -35,7 +35,7 @@ const Login = () => {
   };
   return (
     <form onSubmit={handleLogin}>
-      <TextField autoComplete="false" type="text" id="username" label="Username" fullWidth required helperText="required field" onChange={handleChange} value={state.username} />
+      <TextField autoComplete="off" type="text" id="username" label="Username" fullWidth required helperText="required field" onChange={handleChange} value={state.username} />
       <TextField type="password" id="password" label="Password" fullWidth required helperText="required field" onChange={handleChange} value={state.password} />
       <Button type="submit" variant="contained" color="primary">
         Login

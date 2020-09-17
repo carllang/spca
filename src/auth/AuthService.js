@@ -15,7 +15,7 @@ class AuthService {
 
   setToken(token) {
     try {
-      return localStorage.setItem('token', token);
+      localStorage.setItem('token', token);
     } catch (e) {
       console.log(e.message);
     }
@@ -27,9 +27,9 @@ class AuthService {
 
     return request
       .post(`${serverUrl}/auth/signin`, { username, password })
-      .then((res) => {
-        if (response.data.accessToken) {
-          this.setToken(res.data.accessToken);
+      .then((response) => {
+        if (response.body.accessToken) {
+          this.setToken(response.body.accessToken);
         }
       });
   }
@@ -37,6 +37,7 @@ class AuthService {
   logout() {
     try {
       localStorage.removeItem('token');
+      window.location.reload();
     } catch (e) {
       console.log(e.message);
     }
