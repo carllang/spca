@@ -26,15 +26,17 @@ const LoginPage = () => {
     <LoginLayout>
       <Container>
         <Modal title="Login" text="Please login to continue" isOpen={isOpen} closeModal={() => {}} openModal={() => {}}>
-          <FormContainer>
-            <Login />
-          </FormContainer>
-          <div>
-            <Details>
-              {`${process.env.NODE_ENV}`}
-            </Details>
+          <>
+            <FormContainer>
+              <Login />
+            </FormContainer>
+            <div>
+              <Details>
+                {`${process.env.NODE_ENV}`}
+              </Details>
 
-          </div>
+            </div>
+          </>
         </Modal>
       </Container>
     </LoginLayout>

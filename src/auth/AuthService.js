@@ -43,8 +43,11 @@ class AuthService {
     }
   }
 
+  removeToken() {
+    localStorage.removeItem('token');
+  }
+
   isAuthenticated() {
-    console.log('TOKEN ', localStorage.getItem('token'));
     return !!localStorage.getItem('token');
   }
 }

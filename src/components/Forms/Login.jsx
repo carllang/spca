@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AuthService from '../../auth/AuthService';
@@ -13,12 +14,13 @@ const StyledTextField = styled(TextField)`
 `;
 
 const Login = () => {
+  AuthService.removeToken();
+
+  const history = useHistory();
   const [state, setState] = useState({
     username: '',
     password: '',
   });
-
-  const history = useHistory();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -34,9 +36,10 @@ const Login = () => {
     AuthService.login(state.username, state.password).then(
       () => {
         history.push('/');
-        // window.location.reload();
+        window.location.reload();
       },
       (error) => {
+        // eslint-disable-next-line no-console
         console.log(error.message);
       },
     );
