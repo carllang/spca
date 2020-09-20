@@ -3,8 +3,6 @@ import Switch from '@material-ui/core/Switch';
 import { ThemeContext } from '../../themeContext';
 
 function ThemeToggle() {
-
-
     // The Theme Toggler Button receives not only the theme
     // but also a toggleTheme function from the context
     return (
