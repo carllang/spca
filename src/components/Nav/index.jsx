@@ -7,6 +7,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AuthService from '../../auth/AuthService';
+import ToggleTheme from '../Toggle/ThemeToggle'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -35,6 +36,8 @@ export default function MenuAppBar() {
     <AppBar position="static" color="primary">
       <Toolbar className={classes.root}>
         <div>
+          <ToggleTheme />
+
           <IconButton
             aria-label="account of current user"
             aria-controls="menu-appbar"

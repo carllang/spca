@@ -5,14 +5,6 @@
 import request from 'superagent';
 
 class AuthService {
-  getToken() {
-    try {
-      return localStorage.getItem(token);
-    } catch (e) {
-      console.log(e.message);
-    }
-  }
-
   setToken(token) {
     try {
       localStorage.setItem('token', token);
