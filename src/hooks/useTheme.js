@@ -8,7 +8,7 @@ import { lightBlue } from '@material-ui/core/colors';
 
 export default function useTheme() {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-    const defaultTheme = localStorage.getItem('isDarkTheme') === 'true' ? true : false
+    const defaultTheme = prefersDarkMode || localStorage.getItem('isDarkTheme') === 'true' ? true : false
     const [isDarkTheme, setIsDarkTheme] = useState(defaultTheme);
     const palletType = isDarkTheme ? "dark" : "light";
     const mainPrimaryColor = isDarkTheme ? orange[500] : indigo[500];

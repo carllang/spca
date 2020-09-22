@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const { User, Role } = require('../models');
+const { User, Animal, Role } = require('../models');
 
 const createUsers = async () => {
   const salt = await bcrypt.genSalt(10);
@@ -32,6 +32,45 @@ const createUsers = async () => {
   await user1.save();
   await user2.save();
   await user3.save();
+};
+
+const createAnimals = async () => {
+  const animal1 = new Animal({
+    name: 'Dodger',
+    species: 'dog',
+    gender: 'male',
+    breed: 'Great Perinese',
+    description: 'Big and fluffy and cuddly, very food motivated.',
+  });
+
+  const animal2 = new Animal({
+    name: 'Cloud',
+    species: 'dog',
+    gender: 'female',
+    breed: 'Chow Chow',
+    description: 'Well groomed and fluffy.',
+  });
+
+  const animal3 = new Animal({
+    name: 'Sherman',
+    species: 'LLama',
+    gender: 'male',
+    breed: 'Alpaca',
+    description: 'Will eat anything including humans',
+  });
+
+  const animal4 = new Animal({
+    name: 'Oliver',
+    species: 'cat',
+    gender: 'male',
+    breed: 'moggy',
+    description: 'Likes treats and belly rubs',
+  });
+
+  await animal1.save();
+  await animal2.save();
+  await animal3.save();
+  await animal4.save();
 };
 
 function initialRoles() {
@@ -70,4 +109,4 @@ function initialRoles() {
   });
 }
 
-module.exports = { createUsers, initialRoles };
+module.exports = { createUsers, createAnimals, initialRoles };
