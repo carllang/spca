@@ -7,7 +7,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AuthService from '../../auth/AuthService';
-import ToggleTheme from '../Toggle/ThemeToggle'
+import ToggleTheme from '../Toggle/ThemeToggle';
 
 const useStyles = makeStyles(() => ({
   root: {

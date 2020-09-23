@@ -1,9 +1,5 @@
 body {
   background-color: #282c34;
-  
-}
-.App {
-  text-align: center;
 }
 
 .App-logo {
@@ -43,4 +39,14 @@ body {
 
 .dark {
   background-color: #30404d;
+}
+
+h2 {
+  text-align: left;
+  padding-left: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }

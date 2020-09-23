@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const faker = require('faker');
 const { User, Animal, Role } = require('../models');
 
 const createUsers = async () => {
@@ -35,42 +36,55 @@ const createUsers = async () => {
 };
 
 const createAnimals = async () => {
-  const animal1 = new Animal({
-    name: 'Dodger',
-    species: 'dog',
-    gender: 'male',
-    breed: 'Great Perinese',
-    description: 'Big and fluffy and cuddly, very food motivated.',
-  });
+  const arr = [];
+  for (let i = 0; i < 50; i++) {
+    const animal = new Animal({
+      name: faker.name.findName(),
+      species: faker.lorem.word(),
+      image: faker.image.animals(),
+      gender: Math.random() === 1 ? 'male' : 'female',
+      breed: 'Great Perinese',
+      description: faker.lorem.sentences(),
+    });
+    // arr.push(animal)
+    await animal.save();
+  }
+  // const animal1 = new Animal({
+  //   name: 'Dodger',
+  //   species: 'dog',
+  //   gender: 'male',
+  //   breed: 'Great Perinese',
+  //   description: 'Big and fluffy and cuddly, very food motivated.',
+  // });
 
-  const animal2 = new Animal({
-    name: 'Cloud',
-    species: 'dog',
-    gender: 'female',
-    breed: 'Chow Chow',
-    description: 'Well groomed and fluffy.',
-  });
+  // const animal2 = new Animal({
+  //   name: 'Cloud',
+  //   species: 'dog',
+  //   gender: 'female',
+  //   breed: 'Chow Chow',
+  //   description: 'Well groomed and fluffy.',
+  // });
 
-  const animal3 = new Animal({
-    name: 'Sherman',
-    species: 'LLama',
-    gender: 'male',
-    breed: 'Alpaca',
-    description: 'Will eat anything including humans',
-  });
+  // const animal3 = new Animal({
+  //   name: 'Sherman',
+  //   species: 'LLama',
+  //   gender: 'male',
+  //   breed: 'Alpaca',
+  //   description: 'Will eat anything including humans',
+  // });
 
-  const animal4 = new Animal({
-    name: 'Oliver',
-    species: 'cat',
-    gender: 'male',
-    breed: 'moggy',
-    description: 'Likes treats and belly rubs',
-  });
+  // const animal4 = new Animal({
+  //   name: 'Oliver',
+  //   species: 'cat',
+  //   gender: 'male',
+  //   breed: 'moggy',
+  //   description: 'Likes treats and belly rubs',
+  // });
 
-  await animal1.save();
-  await animal2.save();
-  await animal3.save();
-  await animal4.save();
+  // await animal1.save();
+  // await animal2.save();
+  // await animal3.save();
+  // await animal4.save();
 };
 
 function initialRoles() {

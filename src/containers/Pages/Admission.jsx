@@ -4,7 +4,7 @@ import MainLayout from '../../components/Layout/MainLayout';
 
 const Admission = () => (
   <MainLayout>
-    <h1>Admission</h1>
+    <h2>Admission</h2>
     <AdmissionForm />
   </MainLayout>
 );

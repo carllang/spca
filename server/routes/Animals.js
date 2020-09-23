@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/animals', [authJWT.verifyToken], async (req, res) => {
   const result = await Animal.find();
 
-  res.send(result);
+  res.json(result);
 });
 
 router.get('/animals/:id', async (req, res) => {
   try {
     const result = await Animal.findById(req.params.id).exec();
-    res.send(result);
+    res.json(result);
   } catch (e) {
     res.status(400).send({});
   }

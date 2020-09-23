@@ -1,4 +1,5 @@
 const users = require('./Users');
+const animals = require('./Animals');
 const authRoutes = require('./authRoutes');
 
 function allRoutes(app) {
@@ -12,6 +13,7 @@ function allRoutes(app) {
 
   app.use(process.env.API_VERSION, authRoutes);
   app.use(process.env.API_VERSION, users);
+  app.use(process.env.API_VERSION, animals);
 }
 
 module.exports = allRoutes;

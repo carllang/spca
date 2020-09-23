@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { fetchThunk } from '../reducers/kennels';

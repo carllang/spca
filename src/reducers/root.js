@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { kennelsReducer } from './kennels';
+import { animalsReducer } from './animals';
 
 const store = configureStore({
-  reducer: kennelsReducer,
+  reducer: animalsReducer,
 });
 
 export default store;

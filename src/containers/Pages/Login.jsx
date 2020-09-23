@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import LoginLayout from '../../components/Layout/LoginLayout';
-import Login from '../../components/Forms/Login';
+import Login from '../../components/Login/Login';
 import Modal from '../../components/Modal/Modal';
 
 const FormContainer = styled.div`
