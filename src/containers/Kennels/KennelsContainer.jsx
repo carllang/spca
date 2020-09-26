@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Kennels from '../../components/Kennels';
 import Pending from '../../components/Pending/Pending';
-import useFetchKennelData from '../../hooks/fetchData';
+import useFetchKennelData from '../../hooks/useFetchData';
 
 const Container = styled.div`
   width: 100%;

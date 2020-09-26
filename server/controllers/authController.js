@@ -38,7 +38,7 @@ const signin = async (req, res) => {
       accessToken: token,
     });
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ message: 'Server error' });
   }
 
   // .populate('roles', '-__v')

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import AddIcon from '@material-ui/icons/Add';
 import Pending from '../../components/Pending/Pending';
-import useFetchKennelData from '../../hooks/fetchData';
+import useFetchKennelData from '../../hooks/useFetchData';
 import Kennels from '../../components/Kennels';
 
 const Container = styled.div`

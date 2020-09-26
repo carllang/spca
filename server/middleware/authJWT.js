@@ -50,7 +50,7 @@ const isAdmin = (req, res, next) => {
 const isModerator = (req, res, next) => {
   User.findById(req.userId).exec((err, user) => {
     if (err) {
-      res.status(500).send({ message: err });
+      res.status(500).send({ message: 'User not found' });
       return;
     }
 
@@ -58,12 +58,13 @@ const isModerator = (req, res, next) => {
       {
         _id: { $in: user.roles },
       },
-      (err, roles) => {
+      (error, roles) => {
         if (err) {
-          res.status(500).send({ message: err });
+          res.status(500).send({ message: 'Role not found' });
           return;
         }
 
+        // eslint-disable-next-line no-plusplus
         for (let i = 0; i < roles.length; i++) {
           if (roles[i].name === 'moderator') {
             next();

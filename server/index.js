@@ -27,6 +27,6 @@ connectDb().then(async () => {
     createAnimals();
   }
   app.listen(process.env.BACKEND_PORT, () => {
-    console.log(`Example app listening on port ${process.env.BACKEND_PORT}!`);
+    console.log(`Listening on port ${process.env.BACKEND_PORT}!`);
   });
 });

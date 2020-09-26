@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Animals from '../../components/Animals/Animals';
 import Pending from '../../components/Pending/Pending';
-import useFetchAnimalsData from '../../hooks/fetchAnimalsData';
+import useFetchAnimalsData from '../../hooks/useFetchAnimalsData';
 
 const Container = styled.div`
   width: 100%;

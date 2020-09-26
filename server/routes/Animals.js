@@ -6,17 +6,20 @@ const { Animal } = require('../models');
 const router = express.Router();
 
 router.get('/animals', [authJWT.verifyToken], async (req, res) => {
-  const result = await Animal.find();
-
-  res.json(result);
+  try {
+    const result = await Animal.find();
+    res.json(result);
+  } catch (e) {
+    res.status(400).send({ message: 'Error fetching records' });
+  }
 });
 
-router.get('/animals/:id', async (req, res) => {
+router.get('/animals/:id', [authJWT.verifyToken], async (req, res) => {
   try {
     const result = await Animal.findById(req.params.id).exec();
     res.json(result);
   } catch (e) {
-    res.status(400).send({});
+    res.status(400).send({ message: 'Error fetching record' });
   }
 });
 
@@ -47,7 +50,7 @@ router.post(
       const result = newAnimal.save();
       res.status(201).send(result);
     } catch (e) {
-      res.status(400).send(e);
+      res.status(400).send({ message: 'Error creating record' });
     }
   },
 );

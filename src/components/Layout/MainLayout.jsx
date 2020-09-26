@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Nav from '../Nav';
 import Sidebar from '../Sidebar';
-import useBrowserPrompt from '../../hooks/browserPrompt';
+import useBrowserPrompt from '../../hooks/useBrowserPrompt';
 
 const Main = styled.main`
   min-height: 900px;
