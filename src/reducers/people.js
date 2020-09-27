@@ -2,7 +2,7 @@
 /* eslint-disable import/prefer-default-export */
 import { createReducer } from '@reduxjs/toolkit';
 import request from 'superagent';
-import { FETCH_ANIMALS_SUCCESS, FETCH_ANIMALS_PENDING, FETCH_ANIMALS_ERROR } from '../actions';
+import { FETCH_PEOPLE_SUCCESS, FETCH_PEOPLE_PENDING, FETCH_PEOPLE_ERROR } from '../actions';
 import authHeader from '../auth/AuthHeader';
 
 const initialState = {
@@ -10,16 +10,16 @@ const initialState = {
   pending: false,
   error: false,
 };
-export const animalsReducer = createReducer(initialState, {
-  [FETCH_ANIMALS_SUCCESS]: (state, action) => {
+export const peopleReducer = createReducer(initialState, {
+  [FETCH_PEOPLE_SUCCESS]: (state, action) => {
     state.data = action.payload;
     state.pending = false;
   },
-  [FETCH_ANIMALS_PENDING]: (state) => {
+  [FETCH_PEOPLE_PENDING]: (state) => {
     state.pending = true;
     state.error = false;
   },
-  [FETCH_ANIMALS_ERROR]: (state, action) => {
+  [FETCH_PEOPLE_ERROR]: (state, action) => {
     state.error = action.payload;
     state.pending = false;
   },
@@ -28,7 +28,7 @@ export const animalsReducer = createReducer(initialState, {
 const fetchData = async () => {
   const headers = authHeader();
   try {
-    const r = await request.get('http://localhost:4000/api/v1/animals').set(headers);
+    const r = await request.get('http://localhost:4000/api/v1/people').set(headers);
     return r.body;
   } catch (e) {
     console.log(e.message);
@@ -37,10 +37,10 @@ const fetchData = async () => {
 
 export const fetchThunk = () => async (dispatch) => {
   try {
-    dispatch(FETCH_ANIMALS_PENDING());
+    dispatch(FETCH_PEOPLE_PENDING());
     const result = await fetchData(null, { signal: null });
-    dispatch(FETCH_ANIMALS_SUCCESS(result));
+    dispatch(FETCH_PEOPLE_SUCCESS(result));
   } catch (e) {
-    dispatch(FETCH_ANIMALS_ERROR({ payload: e.message }));
+    dispatch(FETCH_PEOPLE_ERROR({ payload: e.message }));
   }
 };

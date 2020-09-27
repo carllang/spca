@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const faker = require('faker');
-const { User, Animal, Role } = require('../models');
+const {
+  User, Animal, People, Role,
+} = require('../models');
 
 const createUsers = async () => {
   const salt = await bcrypt.genSalt(10);
@@ -36,7 +38,6 @@ const createUsers = async () => {
 };
 
 const createAnimals = async () => {
-  const arr = [];
   for (let i = 0; i < 50; i++) {
     const animal = new Animal({
       name: faker.name.findName(),
@@ -46,45 +47,23 @@ const createAnimals = async () => {
       breed: 'Great Perinese',
       description: faker.lorem.sentences(),
     });
-    // arr.push(animal)
     await animal.save();
   }
-  // const animal1 = new Animal({
-  //   name: 'Dodger',
-  //   species: 'dog',
-  //   gender: 'male',
-  //   breed: 'Great Perinese',
-  //   description: 'Big and fluffy and cuddly, very food motivated.',
-  // });
+};
 
-  // const animal2 = new Animal({
-  //   name: 'Cloud',
-  //   species: 'dog',
-  //   gender: 'female',
-  //   breed: 'Chow Chow',
-  //   description: 'Well groomed and fluffy.',
-  // });
-
-  // const animal3 = new Animal({
-  //   name: 'Sherman',
-  //   species: 'LLama',
-  //   gender: 'male',
-  //   breed: 'Alpaca',
-  //   description: 'Will eat anything including humans',
-  // });
-
-  // const animal4 = new Animal({
-  //   name: 'Oliver',
-  //   species: 'cat',
-  //   gender: 'male',
-  //   breed: 'moggy',
-  //   description: 'Likes treats and belly rubs',
-  // });
-
-  // await animal1.save();
-  // await animal2.save();
-  // await animal3.save();
-  // await animal4.save();
+const createPeople = async () => {
+  for (let i = 0; i < 50; i++) {
+    const people = new People({
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      tel: faker.phone.phoneNumber(),
+      image: faker.image.people(),
+      address1: faker.address.streetAddress(),
+      address2: faker.address.secondaryAddress(),
+      description: faker.lorem.sentences(),
+    });
+    await people.save();
+  }
 };
 
 function initialRoles() {
@@ -123,4 +102,6 @@ function initialRoles() {
   });
 }
 
-module.exports = { createUsers, createAnimals, initialRoles };
+module.exports = {
+  createUsers, createAnimals, createPeople, initialRoles,
+};

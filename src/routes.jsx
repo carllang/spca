@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Kennels from './containers/Pages/Kennels';
+import People from './containers/Pages/People';
 import Animals from './containers/Pages/Animals';
 import Settings from './containers/Pages/Settings';
 import Home from './containers/Pages/index';
@@ -16,7 +17,7 @@ const Routes = () => (
 
       <PrivateRoute exact path="/animals" component={Animals} />
 
-      <PrivateRoute exact path="/kennels" component={Kennels} />
+      <PrivateRoute exact path="/people" component={People} />
 
       <PrivateRoute exact path="/layouteditor" component={LayoutEditor} />
 

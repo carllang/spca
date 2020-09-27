@@ -4,7 +4,7 @@ import { fetchThunk } from '../reducers/animals';
 
 export default function useFetchAnimalsData() {
   const dispatch = useDispatch();
-  const { animals, pending, error } = useSelector((state) => ({ animals: state.animals, pending: state.pending, error: state.error }));
+  const { animals, pending, error } = useSelector((state) => ({ animals: state.animals.data, pending: state.animals.pending, error: state.animals.error }));
 
   useEffect(() => {
     if (!animals && !pending && !error) {

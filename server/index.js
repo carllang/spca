@@ -2,8 +2,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { User, Animal } = require('./models');
-const { createUsers, createAnimals } = require('./scripts/inserts');
+const { User, Animal, People } = require('./models');
+const { createUsers, createAnimals, createPeople } = require('./scripts/inserts');
 require('dotenv').config();
 
 const app = express();
@@ -21,10 +21,12 @@ connectDb().then(async () => {
     await Promise.all([
       User.deleteMany(),
       Animal.deleteMany(),
+      People.deleteMany(),
     ]);
 
     createUsers();
     createAnimals();
+    createPeople();
   }
   app.listen(process.env.BACKEND_PORT, () => {
     console.log(`Listening on port ${process.env.BACKEND_PORT}!`);
