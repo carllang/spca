@@ -1,10 +1,10 @@
 import React from 'react';
 import MainLayout from '../../components/Layout/MainLayout';
 
-const Index = () => (
+const Home = () => (
   <MainLayout>
-    <h1>Home</h1>
+    <h2>Home</h2>
   </MainLayout>
 );
 
-export default Index;
+export default Home;

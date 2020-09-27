@@ -1,19 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainLayout from '../../components/Layout/MainLayout';
-import LayoutEditorContainer from '../LayoutEditor/LayoutEditorContainer';
+import SettingsContainer from '../Settings/SettingsContainer';
 
 const Container = styled.div`
   padding: 20px;
 `;
-
-const KennelsWrapper = () => (
+const SettingsPage = () => (
   <MainLayout>
-    <h2>Layout Editor</h2>
+    <h2>Settings</h2>
     <Container>
-      <LayoutEditorContainer />
+      <SettingsContainer />
     </Container>
   </MainLayout>
 );
 
-export default KennelsWrapper;
+export default SettingsPage;

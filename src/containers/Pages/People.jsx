@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const PeoplePage = () => (
   <MainLayout>
-    <h1>People</h1>
+    <h2>People</h2>
     <Container>
       <KennelsContainer />
     </Container>

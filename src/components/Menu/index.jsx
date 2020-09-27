@@ -15,34 +15,34 @@ const MenuWrapper = () => (
     <List component="nav" aria-label="Menu">
       <ListItem button>
         <ListItemIcon>
-          <HomeIcon color="secondary" />
+          <HomeIcon color="primary" />
         </ListItemIcon>
-        <Link to="/" component={RouterLink}>
+        <Link to="/" component={RouterLink} color="secondary">
           <ListItemText primary="Home" />
         </Link>
       </ListItem>
       <ListItem button>
         <ListItemIcon>
-          <PetsIcon color="secondary" />
+          <PetsIcon color="primary" />
         </ListItemIcon>
-        <Link to="/animals" component={RouterLink}>
+        <Link to="/animals" component={RouterLink} color="secondary">
           <ListItemText primary="Animals" />
         </Link>
       </ListItem>
       <ListItem button>
         <ListItemIcon>
-          <BusinessIcon color="secondary" />
+          <EditIcon color="primary" />
         </ListItemIcon>
-        <Link to="/kennels" component={RouterLink}>
-          <ListItemText primary="Kennels" />
+        <Link to="/people" component={RouterLink} color="secondary">
+          <ListItemText primary="People " />
         </Link>
       </ListItem>
       <ListItem button>
         <ListItemIcon>
-          <EditIcon color="secondary" />
+          <BusinessIcon color="primary" />
         </ListItemIcon>
-        <Link to="/layoutEditor" component={RouterLink}>
-          <ListItemText primary="LayoutEditor" />
+        <Link to="/kennels" component={RouterLink} color="secondary">
+          <ListItemText primary="Kennels" />
         </Link>
       </ListItem>
     </List>

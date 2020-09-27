@@ -1,10 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+
+const ContentWrapper = styled(DialogContent)`
+  margin: 0 auto;
+`;
+
+const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
 
 const Modal = ({
   title, children, isOpen, text, openModal, closeModal, actions,
@@ -13,14 +21,15 @@ const Modal = ({
     open={isOpen}
     onClose={closeModal}
     aria-labelledby="form-dialog-title"
+    TransitionComponent={Transition}
   >
     <DialogTitle id="form-dialog-title">{title}</DialogTitle>
-    <DialogContent>
+    <ContentWrapper>
       <DialogContentText>
         {text}
       </DialogContentText>
       {children}
-    </DialogContent>
+    </ContentWrapper>
     <DialogActions>
       {actions}
     </DialogActions>

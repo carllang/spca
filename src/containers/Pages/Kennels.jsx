@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const KennelsWrapper = () => (
   <MainLayout>
-    <h1>Kennels</h1>
+    <h2>Kennels</h2>
     <Container>
       <KennelsContainer />
     </Container>

@@ -6,8 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import 'fontsource-roboto';
 
 ReactDOM.render(
-  <App />
-  ,
+  <App />,
   document.getElementById('root'),
 );
 

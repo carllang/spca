@@ -5,11 +5,11 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import Routes from './routes';
 import store from './reducers/root';
 import './App.scss';
-import { ThemeContext } from './themeContext';
-import useTheme from './hooks/useTheme'
+import ThemeContext from './theme/themeContext';
+import useTheme from './hooks/useTheme';
 
 function App() {
-  const { theme, isDarkTheme, setIsDarkTheme } = useTheme()
+  const { theme, isDarkTheme, setIsDarkTheme } = useTheme();
   return (
     <ThemeContext.Provider value={{ isDarkTheme, setIsDarkTheme }}>
       <ThemeProvider theme={theme}>
@@ -21,7 +21,7 @@ function App() {
           </div>
         </Provider>
       </ThemeProvider>
-    </ThemeContext.Provider >
+    </ThemeContext.Provider>
   );
 }
 
