@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { createMuiTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { lightBlue } from '@material-ui/core/colors';
+import { lightBlue, blue } from '@material-ui/core/colors';
 import ThemeService from '../theme/themeService';
 
 export default function useTheme() {
@@ -14,8 +14,14 @@ export default function useTheme() {
   );
   const [isDarkTheme, setIsDarkTheme] = useState(defaultTheme);
   const palletType = isDarkTheme ? 'dark' : 'light';
-  const mainPrimaryColor = isDarkTheme ? themePreference.dark.primary : themePreference.light.primary;
-  const mainSecondaryColor = isDarkTheme ? themePreference.dark.primary : themePreference.dark.secondary;
+
+  const primaryDark = themePreference.dark.primary || blue;
+  const primaryLight = themePreference.light.primary || blue;
+  const secondaryDark = themePreference.dark.secondary || lightBlue;
+  const secondaryLight = themePreference.light.secondary || lightBlue;
+
+  const mainPrimaryColor = isDarkTheme ? primaryDark : primaryLight;
+  const mainSecondaryColor = isDarkTheme ? secondaryDark : secondaryLight;
   const theme = createMuiTheme({
     palette: {
       type: palletType,

@@ -13,37 +13,29 @@ import EditIcon from '@material-ui/icons/Edit';
 const MenuWrapper = () => (
   <div>
     <List component="nav" aria-label="Menu">
-      <ListItem button>
+      <ListItem button to="/" component={RouterLink}>
         <ListItemIcon>
-          <HomeIcon color="primary" />
+          <HomeIcon color="secondary" />
         </ListItemIcon>
-        <Link to="/" component={RouterLink} color="secondary">
-          <ListItemText primary="Home" />
-        </Link>
+        <ListItemText primary="Home" />
       </ListItem>
-      <ListItem button>
+      <ListItem button to="/animals" component={RouterLink}>
         <ListItemIcon>
-          <PetsIcon color="primary" />
+          <PetsIcon color="secondary" />
         </ListItemIcon>
-        <Link to="/animals" component={RouterLink} color="secondary">
-          <ListItemText primary="Animals" />
-        </Link>
+        <ListItemText primary="Animals" />
       </ListItem>
-      <ListItem button>
+      <ListItem button to="/people" component={RouterLink}>
         <ListItemIcon>
-          <EditIcon color="primary" />
+          <EditIcon color="secondary" />
         </ListItemIcon>
-        <Link to="/people" component={RouterLink} color="secondary">
-          <ListItemText primary="People " />
-        </Link>
+        <ListItemText primary="People " />
       </ListItem>
-      <ListItem button>
+      <ListItem button to="/kennels" component={RouterLink}>
         <ListItemIcon>
-          <BusinessIcon color="primary" />
+          <BusinessIcon color="secondary" />
         </ListItemIcon>
-        <Link to="/kennels" component={RouterLink} color="secondary">
-          <ListItemText primary="Kennels" />
-        </Link>
+        <ListItemText primary="Kennels" />
       </ListItem>
     </List>
   </div>

@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import { Link } from '@material-ui/core';
 import AuthService from '../../auth/AuthService';
 
 const useStyles = makeStyles(() => ({
@@ -62,13 +61,8 @@ export default function MenuAppBar() {
             open={open}
             onClose={handleClose}
           >
-
-            <MenuItem>
-              <Link to="/settings" component={RouterLink} color="secondary">Settings</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/layouteditor" component={RouterLink} color="secondary">Layout Editor</Link>
-            </MenuItem>
+            <MenuItem to="/settings" component={RouterLink}>Settings</MenuItem>
+            <MenuItem to="/layouteditor" component={RouterLink}>Layout Editor</MenuItem>
             <MenuItem onClick={handleLogout}>Log out</MenuItem>
           </Menu>
         </div>
