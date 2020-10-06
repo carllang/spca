@@ -38,7 +38,7 @@ const createUsers = async () => {
 };
 
 const createAnimals = async () => {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 25; i++) {
     const animal = new Animal({
       name: faker.name.findName(),
       species: faker.lorem.word(),
@@ -52,7 +52,7 @@ const createAnimals = async () => {
 };
 
 const createPeople = async () => {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 25; i++) {
     const people = new People({
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),

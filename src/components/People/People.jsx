@@ -61,8 +61,8 @@ const People = ({ people }) => {
                 <li>
                   <ImgWrapper
                     src={`${person.image}?random=${Math.random()}`}
-                    width="150"
-                    height="90"
+                    width="100%"
+
                   />
                   Name:
                   {' '}

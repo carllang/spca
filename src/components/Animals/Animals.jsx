@@ -1,82 +1,50 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles';
-import { Card } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import ListView from './ListView';
+import BlockView from './BlockView';
 
-const ImgWrapper = styled.img`
-  display: block;
-  margin-bottom: 20px;
-`;
-
-const FlexWrapper = styled.div`
-  display: flex;
-  justifycontent: space-between;
-  flex-wrap: wrap;
-  .card {
-    margin: 0 20px 20px 0;
-    width: 23%;
-  }
-`;
-
-const FIlterWrapper = styled.div`
+const ToolBarWrapper = styled.div`
   margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
 `;
-
-const useStyles = makeStyles({
-  root: {
-    overflow: 'visible',
-    padding: '20px',
-  },
-});
 
 const Animals = ({ animals }) => {
-  const classes = useStyles();
   const [result, setResult] = useState(animals);
+  const [listView, setListView] = useState(true);
 
   const handleFilterInput = (e) => {
-    const animalsFiltered = animals.filter((animal) =>
-      animal.name.toLowerCase().includes(e.target.value),
-    );
+    const animalsFiltered = animals.filter((animal) => animal.name.toLowerCase().includes(e.target.value));
     setResult(animalsFiltered);
   };
 
+  const handleViewChange = (event, value) => {
+    value === 'list' ? setListView(true) : setListView(false);
+  };
   return (
     <div>
-      <FIlterWrapper>
+      <ToolBarWrapper>
         <TextField
           onChange={handleFilterInput}
           label="Filter results"
           variant="outlined"
         />
-      </FIlterWrapper>
-
-      <FlexWrapper>
-        {result &&
-          result.map((animal, i) => (
-            <Card
-              variant="outlined"
-              className={`${classes.root} card`}
-              key={i}
-            >
-              <ul>
-                <li>
-                  <ImgWrapper
-                    src={`${animal.image}?random=${Math.random()}`}
-                    width="150"
-                    height="90"
-                  />
-                  Name: <span>{animal.name}</span>
-                </li>
-                <li>
-                  Species: <span>{animal.species}</span>
-                </li>
-
-                {/* <li>{animal.description}</li> */}
-              </ul>
-            </Card>
-          ))}
-      </FlexWrapper>
+        <ToggleButtonGroup orientation="horizontal" value={listView ? 'list' : 'block'} exclusive onChange={(e, value) => handleViewChange(e, value)}>
+          <ToggleButton value="list" aria-label="list">
+            <ViewListIcon />
+          </ToggleButton>
+          <ToggleButton value="block" aria-label="module">
+            <ViewModuleIcon />
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </ToolBarWrapper>
+      {!listView && <BlockView result={result} />}
+      {listView && <ListView result={result} />}
     </div>
   );
 };
