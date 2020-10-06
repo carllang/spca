@@ -42,14 +42,14 @@ const BlockView = ({ result }) => {
   return (
     <FlexWrapper>
       {result
-        && result.map((animal, i) => (
+        && result.map((person, i) => (
           <Card
             variant="outlined"
             className={`${classes.root} card`}
             key={i}
           >
             <ImgWrapper
-              src={`${animal.image}?random=${Math.random()}`}
+              src={`${person.image}?random=${Math.random()}`}
               width="5%"
             />
 
@@ -58,33 +58,27 @@ const BlockView = ({ result }) => {
                 <RowField>
                   Name:
                   {' '}
-                  <span>{animal.name}</span>
+                  <span>{`${person.firstName} ${person.lastName}`}</span>
                 </RowField>
                 <RowField>
-                  Gender:
+                  Tel:
                   {' '}
-                  {animal.gender}
+                  {person.tel}
                 </RowField>
                 <RowField>
-                  Species:
+                  Description:
                   {' '}
-                  {animal.species}
+                  {person.description}
                 </RowField>
-                <RowField>
-                  Breed:
-                  {' '}
-                  {animal.breed}
-                </RowField>
-                {/* <RowField>Date added: {animal.createdAt}</RowField> */}
                 <RowField>
                   Date added:
                   {' '}
-                  {dayjs(animal.createdAt).format('DD-MM-YYYY')}
+                  {dayjs(person.createdAt).format('DD-MM-YYYY')}
                 </RowField>
                 <RowField>
                   Time added:
                   {' '}
-                  {dayjs(animal.createdAt).format('HH:mm:ssZ[Z]')}
+                  {dayjs(person.createdAt).format('HH:mm:ssZ[Z]')}
                 </RowField>
               </Typography>
             </DetailsWrapper>

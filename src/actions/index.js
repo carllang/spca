@@ -11,3 +11,6 @@ export const FETCH_KENNELS_ERROR = createAction('FETCH_KENNELS_ERROR');
 export const FETCH_PEOPLE_SUCCESS = createAction('FETCH_PEOPLE_SUCCESS');
 export const FETCH_PEOPLE_PENDING = createAction('FETCH_PEOPLE_PENDING');
 export const FETCH_PEOPLE_ERROR = createAction('FETCH_PEOPLE_ERROR');
+
+export const TOGGLE_PEOPLE_LIST_VIEW = createAction('TOGGLE_PEOPLE_LIST_VIEW');
+export const TOGGLE_ANIMALS_LIST_VIEW = createAction('TOGGLE_ANIMALS_LIST_VIEW');
