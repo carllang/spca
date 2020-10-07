@@ -7,7 +7,7 @@ export default function useFetchAnimalsData() {
   const { animals, pending, error } = useSelector((state) => ({ animals: state.animals.data, pending: state.animals.pending, error: state.animals.error }));
 
   useEffect(() => {
-    if (!animals && !pending && !error) {
+    if (animals.length === 0 && !pending && !error) {
       dispatch(fetchThunk());
     }
   }, [animals, pending, error, dispatch]);

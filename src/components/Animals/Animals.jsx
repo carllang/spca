@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
 import ListView from './ListView';
 import BlockView from './BlockView';
 import ListOrBlockToggle from '../Toggle/ListOrBlockToggle';
+import Pending from '../Pending/Pending';
+import AnimalFilter from '../Filter/AnimalFilter';
+import { getFilteredAnimals } from '../../selectors/animalSelectors';
 
 const ToolBarWrapper = styled.div`
   margin-bottom: 40px;
@@ -12,31 +14,23 @@ const ToolBarWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Animals = ({ animals, view }) => {
-  const [result, setResult] = useState(animals);
+const Animals = ({
+  layoutView, pending, filteredAnimals,
+}) => (
+  <div>
+    <ToolBarWrapper>
+      <AnimalFilter />
+      <ListOrBlockToggle />
+    </ToolBarWrapper>
 
-  const handleFilterInput = (e) => {
-    const animalsFiltered = animals.filter((animal) => animal.name.toLowerCase().includes(e.target.value));
-    setResult(animalsFiltered);
-  };
-
-  return (
-    <div>
-      <ToolBarWrapper>
-        <TextField
-          onChange={handleFilterInput}
-          label="Filter results"
-          variant="outlined"
-        />
-        <ListOrBlockToggle />
-      </ToolBarWrapper>
-      {view === 'block' && <BlockView result={result} />}
-      {view === 'list' && <ListView result={result} />}
-    </div>
-  );
-};
-
+    {pending && <Pending />}
+    {layoutView === 'block' && <BlockView result={filteredAnimals} />}
+    {layoutView === 'list' && <ListView result={filteredAnimals} />}
+  </div>
+);
 const mapStateToProps = (state) => ({
-  view: state.meta.listView.animals,
+  layoutView: state.meta.listView.animals,
+  filteredAnimals: getFilteredAnimals(state),
 });
+
 export default connect(mapStateToProps)(Animals);
